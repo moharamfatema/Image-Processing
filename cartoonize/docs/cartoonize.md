@@ -1,5 +1,46 @@
 # Cartoonizing images
 
+## Hyperparameters and filters
+
+### Median filter
+
+- The `MEDIAN_K` hyperparameter is the kernel size of the median filter. Which is the size of the window being extracted from the image to calculate the median value to assign each pixel. The median filter is used to reduce the salt and pepper noise in the image without smoothing the edges.
+
+> The median filter uses `BORDER_REPLICATE` internally to cope with border pixels
+> Example: `aaaaaa|abcdefgh|hhhhhhh`
+
+### Laplacian filter
+
+- The `LAPLACE_K` hyperparameter is the kernel size of the Laplacian filter. The Laplacian filter is used to detect the edges in the image. The algorithm operates by convolving a kernel of weights with each grid cell and its neighbours in an image.
+
+> Four `3x3` sized filters and one `5x5` filter are available for selection. The weights of the kernels are as follows:
+>
+>![Laplacian kernels][laplacian-kernels]
+>
+>The function calculates the Laplacian of the source image by adding up the second x and y derivatives calculated using the Sobel operator:
+>
+>![Laplacian formula][laplacian-formula]
+
+### Binary threshold
+
+- The `THRESHOLD` hyperparameter is the threshold value for the edge detection. The threshold value is the minimum value of the edge pixel to be considered as an edge. The higher the threshold value, the less edges will be detected.
+
+### Bilateral filter
+
+>The basic idea underlying bilateral filtering is to do in the range of an image what traditional filters do in its domain. Two pixels can be close to one another, that is, occupy nearby spatial location, or they can be similar to one another, that is, have nearby values, possibly in a perceptually meaningful fashion. It replaces the pixel value at x with an average of similar and nearby pixel values. In smooth regions, pixel values in a small neighborhood are similar to each other, and the bilateral filter acts essentially as a standard domain filter, averaging away the small, weakly correlated differences between pixel values caused by noise. Thus, good filtering behavior is achieved at the boundaries, thanks to the domain component of the filter, and crisp edges are preserved at the same time, thanks to the range component.
+
+- The `DIAMETER` hyperparameter is the diameter of the pixel neighborhood used during the bilateral filter.  Large filters (d > 5) are very slow because the filter is non-linear, so it is recommended to use d=5 for real-time applications, and perhaps d=9 for offline applications that need heavy noise filtering.
+
+- The `SIGMA_COLOR` hyperparameter is the filter sigma in the color space.  A larger value of the parameter means that farther colors within the pixel neighborhood (see sigmaSpace) will be mixed together, resulting in larger areas of semi-equal color.
+
+- The `SIGMA_SPACE` hyperparameter is the filter sigma in the coordinate space. A larger value of the parameter means that farther pixels will influence each other as long as their colors are close enough (see sigmaColor). When d>0, it specifies the neighborhood size regardless of sigmaSpace. Otherwise, d is proportional to sigmaSpace.
+
+- The `REPS` hyperparameter is the number of repetitions for the bilateral filter.
+
+>For simplicity, you can set the 2 sigma values to be the same. If they are small (< 10), the filter will not have much effect, whereas if they are large (> 150), they will have a very strong effect, making the image look "cartoonish" which is the effect we want. However, large sigma values also result in a very slow filter, so we apply a relatively small value for both and then apply the filter multiple times to get the cartoon effect.
+
+## Steps of the algorithm in code
+
 ## Imports
 
 ```python
@@ -23,8 +64,6 @@ SIGMA_SPACE = 7
 
 REPS = 10
 ```
-
-## Steps of the algorithm
 
 ### Reading the image
 
@@ -149,3 +188,6 @@ view('img/c.jpg')
 ```
 
 ![png](output_23_0.png)
+
+[laplacian-kernels]: laplace-k.png
+[laplacian-formula]: laplace-f.png
