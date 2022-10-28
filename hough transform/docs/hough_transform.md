@@ -99,5 +99,5 @@
 ![Example1 Lines Image](ex2_lines.jpg)
 ![Example1 Lines ROI Image](ex2_lines_roi.jpg)
 
-### Step8: Draw lines on the original image
+### Step7: Draw lines on the original image
 ![Example1 Final Ouput](ex2_output.jpg)
