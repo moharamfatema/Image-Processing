@@ -64,3 +64,40 @@
 
 ### Step8: Draw lines on the original image
 ![Example1 Final Ouput](example1_final_output.png)
+
+
+
+## Example 2
+### Original Image:
+![Example1 Image](ex2_original.jpg)
+
+### Step1: Smoothing the image 
+	In this step we used the medianBlur function from openCV library with a
+	kernal size equals 11.
+![Example1 Smoothed Image](ex2_blured.jpg)
+
+### Step2: Edge Detection
+	In this step we use the Canny function from openCV library with a 100
+	as threshold1 and 200 as threshold2.
+![Example1 Edge detected Image](ex2_edge_detection.jpg)
+
+### Step3: Region Of Interest
+	From the output image in step2 we can notic that our rigon of interest
+	is approximately bounded by these four points (20, 150), (175, 0), (175, 275). We used polygon2mask function from skimage 
+	library to mask the edge detection output image.
+![Example1 ROI Image](ex2_roi.jpg)
+
+### Step4: Non local maxima suppression
+	In this step we used a window with a size of 100. 
+	
+### Step5: Sort local maxima points in descending order
+	In this step we was only interested in the maximum two lines
+	(the road edges).
+	
+### Step6: Reconstruct lines into (x, y)-space
+	We recontructed the lines from the original lines formula:
+![Example1 Lines Image](ex2_lines.jpg)
+![Example1 Lines ROI Image](ex2_lines_roi.jpg)
+
+### Step8: Draw lines on the original image
+![Example1 Final Ouput](ex2_output.jpg)
