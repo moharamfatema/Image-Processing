@@ -15,3 +15,12 @@ Mohamed Zyton | 6670
 <!-- References -->
 [docs-badge]: https://img.shields.io/badge/Cartoonize%20docs-blue
 [cartoonize-docs]: cartoonize/docs/cartoonize.md
+
+## Part 2 - Hough Transform
+
+[![docs-badge]][Hough-Transform-docs]
+
+<!-- References -->
+[docs-badge]: https://img.shields.io/badge/Cartoonize%20docs-blue
+[cartoonize-docs]: hough transform/docs/hough_transform.md
+
