@@ -18,9 +18,9 @@ Mohamed Zyton | 6670
 
 ## Part 2 - Hough Transform
 
-[![docs-badge]][Hough-Transform-docs]
+[![docs-badge2]][Hough-Transform-docs]
 
 <!-- References -->
-[docs-badge]: https://img.shields.io/badge/Hough%20Transform%20docs-blue
+[docs-badge2]: https://img.shields.io/badge/Hough%20Transform%20docs-blue
 [Hough-Transform-docs]: houghtransform/docs/hough_transform.md
 
