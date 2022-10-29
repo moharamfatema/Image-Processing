@@ -22,5 +22,5 @@ Mohamed Zyton | 6670
 
 <!-- References -->
 [docs-badge]: https://img.shields.io/badge/HoughTransform%20docs-blue
-[Hough-Transform-docs]: hough transform/docs/hough_transform.md
+[Hough-Transform-docs]: "hough transform/docs/hough_transform.md"
 
